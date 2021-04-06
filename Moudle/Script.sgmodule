@@ -17,6 +17,25 @@ URL-REGEX,https?:\/\/youtubei.googleapis.com\/youtubei\/.+(ad|log),REJECT
 URL-REGEX,https?:\/\/s\.youtube\.com\/api\/stats\/qoe\?adformat,REJECT
 URL-REGEX,https?:\/\/[\w-]+\.googlevideo\.com\/.+&oad,REJECT-TINYGIF
 
+# > 微博
+DOMAIN,uve.weibo.com,REJECT
+# > 什么值得买
+URL-REGEX,^https?:\/\/((app-)?api|haojia\.m)\.smzdm\.com\/((v\d\/)?uti|detail_modu)l\/(loading|banner),REJECT
+# > 淘宝
+URL-REGEX,^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.((trip\.activity|film\.mtopadvertiseapi)\.querytmsresources|(taobao\.idle\.home|aliyun\.mobile)\.welcome(page)?|.*?\.ads?\.),REJECT
+URL-REGEX,^https?://gw.alicdn.com/(t(f|p)s/.+\d{3,4}-\d{4}|mt),REJECT
+URL-REGEX,^https?:\/\/render\.alipay\.com\/p\/s\/h5data\/prod\/spring-festival-2019-h5data\/popup-h5data\.json,REJECT
+URL-REGEX,^https?:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.taobao\.wireless\.home\.splash\.awesome\.get\/,REJECT
+AND,((URL-REGEX,\/amdc\/mobileDispatch),(USER-AGENT,%E6%89%8B%E6%9C%BA%E6%B7%98%E5%AE%9D*)),REJECT
+
+# > 携程
+URL-REGEX,^https?:\/\/socketio\.ctrip\.com\/api,REJECT
+
+# > WeTV
+#DOMAIN,btrace.wetvinfo.com,REJECT
+#DOMAIN,mtrace.wetvinfo.com,REJECT
+
+
 [URL Rewrite]
 #YouTube去广告
 ctier=[A-Z] citer=A 302
@@ -92,17 +111,37 @@ http-response https:\/\/(api|api-cs)\.intsig\.net\/purchase\/cs\/query_property\
 http-response ^https?:\/\/(i|newdrugs)\.dxy\.cn\/(snsapi\/username\/|app\/user\/(pro\/stat\?|init\?timestamp=)) requires-body=1,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/yyzs.js, tag=用药助手
 http-response ^https://account.wps.*/api/users/ requires-body=1,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/Wps.js, tag=WPS
 http-response ^https:\/\/viva\.v21xy\.com\/api\/rest\/u\/vip requires-body=1,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/vivavideo.js, tag=小影
-http-response ^https?:\/\/api.bjxkhc.com\/index\.php\/app\/ios\/(vod\/show|(user|vod|topic|type)\/index) requires-body=1,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/File/aimeiju.js, tag=爱美剧
 http-response ^https?:\/\/api\.vnision\.com\/v1\/(users\/|banners) requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/File/dapian.js, tag=大片-视频编辑器
 
-# HotKids （weixin110.qq.com）
-#tbopener.js = type=http-response,pattern=^https?:\/\/weixin110\.qq\.com\/cgi-bin\/mmspamsupport-bin\/newredirectconfirmcgi,script-path=https://raw.githubusercontent.com/HotKids/Rules/master/Script/weixin110.js
+# > JD App 显示历史价格 by yichahucha
+#// jd_price.js = type=http-response,requires-body=1,pattern=^https?://api\.m\.jd\.com/client\.action\?functionId=(wareBusiness|serverConfig|basicConfig),script-path=https://raw.githubusercontent.com/yichahucha/surge/master/jd_price.js
 
-微信App内被屏蔽链接快捷跳转 = type=http-response,pattern=^https?:\/\/weixin110\.qq\.com\/cgi-bin\/mmspamsupport-bin\/newredirectconfirmcgi,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/HotKids/Rules/master/Script/weixin110.js,script-update-interval=0
+# > Taobao App 显示历史价格 by yichahucha
+#// tb_price.js = type=http-request,requires-body=1,pattern=^http:\/\/.+\/amdc\/mobileDispatch,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/tb_price.js
+#// tb_price.js = type=http-response,requires-body=1,pattern=^https?:\/\/trade-acs\.m\.taobao\.com\/gw\/mtop\.taobao\.detail\.getdetail,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/tb_price.js
+
+# HotKids （weixin110.qq.com）
+#tbopener.js = type=http-response,pattern=^https?:\/\/weixin110\.qq\.com\/cgi-bin\/mmspamsupport-bin\/newredirectconfirmcgi,script-path=https://raw.githubusercontent.com/HotKids/Rules/master/Script/weixi110.js
+#微信App内被屏蔽链接快捷跳转 = type=http-response,pattern=^https?:\/\/weixin110\.qq\.com\/cgi-bin\/mmspamsupport-bin\/newredirectconfirmcgi,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/HotKids/Rules/master/Script/weixin110.js,script-update-interval=0
+
+# > 微信 App 内被屏蔽链接快捷跳转
+weixin110.js = type=http-response,requires-body=1,max-size=-1,pattern=^https?:\/\/weixin110\.qq\.com\/cgi-bin\/mmspamsupport-bin\/newredirectconfirmcgi,script-path=https://raw.githubusercontent.com/HotKids/Rules/master/Script/weixin110.js
 
 TestFlight区域限制解除 = type=http-request,pattern=^https?:\/\/testflight\.apple\.com\/v\d\/accounts\/.+?\/install$,requires-body=1,max-size=0,script-path=https://gist.githubusercontent.com/NobyDa/9be418b93afc5e9c8a8f4d28ae403cf2/raw/TF_Download.js
+
+# > 微博应用内去广告 by yichahucha
+wb_ad.js = type=http-response,requires-body=1,max-size=-1,pattern=^https?:\/\/m?api\.weibo\.c(n|om)\/2\/(statuses\/(unread|extend|positives\/get|(friends|video)(\/|_)(mix)?timeline)|stories\/(video_stream|home_list)|(groups|fangle)\/timeline|profile\/statuses|comments\/build_comments|photo\/recommend_list|service\/picfeed|searchall|cardlist|page|!\/photos\/pic_recommend_status|video\/tiny_stream_video_list|photo/info|remind/unread_count),script-path=https://raw.githubusercontent.com/yichahucha/surge/master/wb_ad.js
+
+# > 微博启动页去广告 by yichahucha
+wb_launch.js = type=http-response,requires-body=1,max-size=-1,pattern=^https?:\/\/(sdk|wb)app\.uve\.weibo\.com(\/interface\/sdk\/sdkad.php|\/wbapplua\/wbpullad.lua),script-path=https://raw.githubusercontent.com/yichahucha/surge/master/wb_launch.js
+
+# > 微信公众号去广告 by Choler&NoByDa
+WeChat.js = type=http-response,requires-body=1,max-size=-1,pattern=^https?:\/\/mp\.weixin\.qq\.com\/mp\/getappmsgad,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/File/Wechat.js
+
+# > 什么值得买去广告 By blackmatrix7
+SMZDM.js = type=http-response,requires-body=1,max-size=-1,pattern=^https?:\/\/(s|a(pp|rticle)|h(aojia|omepage))-api\.smzdm\.com\/((hom|util\/updat|article\/index_home_pag)e|sou)(\/list\?)?,script-path=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/smzdm/smzdm_remove_ads.js
 
 
 
 [MITM]
-hostname = %APPEND% tncj.hortorgames.com, *.googlevideo.com, *.youtube.com, youtubei.googleapis.com,testflight.apple.com,api.weibo.cn,mapi.weibo.com,*.uve.weibo.com,trade-acs.m.taobao.com,ios.prod.ftl.netflix.com,duoting.tatatimes.com, cm.szsszykj.com, avoscloud.com, api.flexibits.com, d.syshhc.top, 115.28.168.103, dbapi.ganbuguo.com,api.591master.com, www.mindmeister.com, sports.lifesense.com, api.pushover.net, subs.platforms.team, api.hulusaas.com, snailsleep.net,music.snailsleep.net,community.snailsleep.net, api.jiaonizuocai.com, nmeditation.snailsleep.net, claritywallpaper.com, subscription-service.neuralprisma.com, mappsv5.caixin.com, diary.7english.cn, api.gotokeep.com, *.ddly666.top, hkj178.com, a.jxjt888.top, lysl2020.com, www.i3zh.com,mb3admin.com,api2.mubu.com,mp.weixin.qq.com,r.inews.qq.com,m.client.10010.com,api.revenuecat.com,vip1.kuwo.cn,api.gamer.com.tw,ap*.intsig.net,newdrugs.dxy.cn,account.wps.cn,viva.v21xy.com,api.bjxkhc.com,api.vnision.com,api.bilibili.com,weixin110.qq.com,api.m.jd.com
+hostname = %APPEND% tncj.hortorgames.com, *.googlevideo.com, *.youtube.com, youtubei.googleapis.com,testflight.apple.com,api.weibo.cn,mapi.weibo.com,*.uve.weibo.com,trade-acs.m.taobao.com,*acs.m.taobao.com,com,*api.smzdm.com,haojia.m.smzdm.com,ios.prod.ftl.netflix.com,duoting.tatatimes.com, cm.szsszykj.com, avoscloud.com, api.flexibits.com, d.syshhc.top, 115.28.168.103, dbapi.ganbuguo.com,api.591master.com, www.mindmeister.com, sports.lifesense.com, api.pushover.net, subs.platforms.team, api.hulusaas.com, snailsleep.net,music.snailsleep.net,community.snailsleep.net, api.jiaonizuocai.com, nmeditation.snailsleep.net, claritywallpaper.com, subscription-service.neuralprisma.com, mappsv5.caixin.com, diary.7english.cn, api.gotokeep.com, *.ddly666.top, hkj178.com, a.jxjt888.top, lysl2020.com, www.i3zh.com,mb3admin.com,api2.mubu.com,mp.weixin.qq.com,weixin110.qq.com,r.inews.qq.com,m.client.10010.com,api.revenuecat.com,vip1.kuwo.cn,api.gamer.com.tw,ap*.intsig.net,newdrugs.dxy.cn,account.wps.cn,viva.v21xy.com,api.bjxkhc.com,api.vnision.com,api.bilibili.com,api.m.jd.com,gw.alicdn.com,render.alipay.com
