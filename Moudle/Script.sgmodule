@@ -35,7 +35,6 @@ URL-REGEX,^https?:\/\/socketio\.ctrip\.com\/api,REJECT
 #DOMAIN,btrace.wetvinfo.com,REJECT
 #DOMAIN,mtrace.wetvinfo.com,REJECT
 
-
 [URL Rewrite]
 #YouTube去广告
 ctier=[A-Z] citer=A 302
