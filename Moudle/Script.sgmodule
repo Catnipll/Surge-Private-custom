@@ -2,6 +2,17 @@
 #!desc=Surge-Private-custom Script 模块配置
 
 [Rule]
+# 微信小程序去广告通用规则
+DOMAIN, wxsnsdy.wxs.qq.com, REJECT
+DOMAIN, wxsmsdy.video.qq.com, REJECT
+DOMAIN, wxsnsdythumb.wxs.qq.com, REJECT
+
+# 收钱吧小程序去广告
+DOMAIN, ads-shopping.shouqianba.com, REJECT
+
+# 猫眼电影小程序去广告
+DOMAIN, ad.maoyan.com, REJECT
+
 # 字节跳动 - 广告服务商
 DOMAIN, ad.zijieapi.com, REJECT
 DOMAIN, i.snssdk.com, REJECT
@@ -220,6 +231,188 @@ ctier=[A-Z] citer=A 302
 (^https:\/\/c\.pc\.qq\.com\/ios\.html\?url=)(http.*)(&level=.*) $2 302
 (^https:\/\/pingtas\.qq\.com\/webview\/pingd\?dm=c\.pc\.qq\.com&pvi=\d+&si=s\d+&url=\/ios\.html\?url%3d)(http.*)(%26level.*%26level.*) $2 302
 
+# 企麦点餐系统小程序去广告
+^https:\/\/webapi\.qmai\.cn\/web\/catering\/advertising\/ - reject
+^https:\/\/webapi\.qmai\.cn\/web\/cmk-center\/marketing\/canvas\/advert-reach$ - reject
+
+#永辉小程序去广告 @ArthasYZ
+^https:\/\/api\.yonghuivip\.com\/api\/fp\/homepage\/pop - reject
+^https:\/\/activity\.yonghuivip\.com\/api\/app\/fp\/homepage\/pop - reject
+^https:\/\/activity\.yonghuivip\.com\/api\/\/web\/shensuan\/ad - reject
+^https:\/\/sauron-report\.yonghuivip\.com\/collect - reject
+
+#必胜客小程序去广告 res.pizzahut.com.cn
+^https:\/\/res\.pizzahut\.com\.cn\/CRM - reject
+
+#肯德基小程序去广告 orders.kfc.com.cn, dynamicad.kfc.com.cn, res.kfc.com.cn
+#^https:\/\/orders\.kfc\.com\.cn\/preorder-portal\/api\/v2\/coupon - reject
+#^https:\/\/dynamicad\.kfc\.com\.cn\/api - reject
+#^https:\/\/res\.kfc\.com\.cn\/CRM\/kfcad\/custom_v2\/wxapp - reject
+#^https:\/\/orders\.kfc\.com\.cn\/preorder-portal\/api\/v2\/activity - reject
+
+#麦当劳小程序去广告 api.mcd.cn
+^https:\/\/api\.mcd\.cn\/bff\/portal\/home\/hotActivity - reject
+
+#星巴克小程序去广告 3pp.starbucks.com.cn
+^https:\/\/3pp\.starbucks\.com\.cn\/wxmem\/popup - reject
+^https:\/\/3pp\.starbucks\.com\.cn\/wxmem\/index\/banner - reject
+^https:\/\/3pp\.starbucks\.com\.cn\/wxmem\/index\/global - reject
+
+#神州租车小程序去广告 apiproxy.zuche.com
+^https:\/\/apiproxy\.zuche\.com\/resource\/carrctapi\/home\/marketing - reject
+^https:\/\/apiproxy\.zuche\.com\/resource\/carrctapi\/home\/page\/advertising - reject
+
+#闪送小程序去广告 miniprogram.ishansong.com, ads.ishansong.com
+^https:\/\/miniprogram\.ishansong\.com\/cms\/faq\/query - reject
+^https:\/\/ads\.ishansong\.com\/advert - reject
+
+#霸王茶姬小程序去广告 @ArthasYZ
+
+#EMS小程序去广告 @ArthasYZ
+^https:\/\/ump\.ems\.com\.cn\/mailAd$ - reject
+
+#曹操出行小程序去广告 minicap.caocaokeji.cn
+^https:\/\/minicap\.caocaokeji\.cn\/advert-bss\/pullAdvert - reject
+
+#羊城通小程序去广告 r2.gzyct.com
+^https:\/\/r2\.gzyct\.com\/qrcode\/advert - reject
+
+#极兔快递小程序去广告 applets.jtexpress.com.cn
+^https:\/\/applets\.jtexpress\.com\.cn - reject
+
+#哈啰小程序去广告 api.hellobike.com
+^https:\/\/api\.hellobike\.com\/api\?adx - reject
+
+#微快递小程序去广告 api.kuaidihelp.com
+^https:\/\/api\.kuaidihelp\.com\/g_order_core\/v2\/mina\/User\/getBannerList - reject
+
+#美柚小程序去广告 wxproj.seeyouyima.com
+^https:\/\/wxproj\.seeyouyima\.com\/data\/today_tips - reject
+
+#快狗打车搬家小程序去广告 suyun-user.daojia.com
+^https:\/\/suyun-guest\.daojia\.com\/api\/kuaigou\/banjia\/review - reject
+
+#货拉拉小程序去广告 qapi.huolala.cn, appuser-static.huolala.cn
+^https:\/\/qapi\.huolala\.cn\/ads - reject
+^https:\/\/qapi\.huolala\.cn\/home_new_user - reject
+^https:\/\/qapi\.huolala\.cn\/get_service_list - reject
+^https:\/\/appuser-static\.huolala\.cn\/imgs - reject
+
+#广州地铁乘车码小程序去广告 apis.alenable.com
+^https:\/\/apis\.alenable\.com\/mall\/v1\/api\/mall\/skin\/user\/get - reject
+^https:\/\/apis\.alenable\.com\/ycx\/v1\/api\/adPut - reject
+
+#花小猪打车小程序去广告 api.hongyibo.com.cn, res.hongyibo.com.cn
+^https:\/\/api\.hongyibo\.com\.cn - reject
+^https:\/\/res\.hongyibo\.com\.cn\/os\/gs\/resapi\/activity - reject
+
+#申通快递小程序去广告 customer-app.sto.cn, sto-customer-app.oss-cn-shanghai.aliyuncs.co
+^https:\/\/customer-app\.sto\.cn\/api\/app\/banner\/banner - reject
+^https:\/\/sto-customer-app\.oss-cn-shanghai\.aliyuncs\.com\/images - reject
+
+#达达快送小程序去广告 supplier-api.imdada.cn
+^https:\/\/supplier-api\.imdada\.cn\/fe\/public\/ad\/spot\?forwardServiceName=growth-activity - reject
+
+#滴滴出行小程序去广告 common.diditaxi.com.cn, capis*.didapinche.com
+^https:\/\/capis(-\d)?\.didapinche\.com\/adbase - reject
+
+#滴滴打车小程序去广告 conf.diditaxi.com.cn 
+^https:\/\/conf\.diditaxi\.com\.cn\/homepage\/v1\/core - reject
+
+#中通快递小程序去广告 @ArthasYZ
+^https:\/\/hdgateway\.zto\.com\/getApolloConfig - reject
+^https:\/\/hdgateway\.zto\.com\/track - reject
+^https:\/\/hdgateway\.zto\.com\/getAdInfo - reject
+^https:\/\/hdgateway\.zto\.com\/listJumperShow - reject
+^https:\/\/fscdn\.zto\.com\/fs1 - reject
+
+#来电小程序去广告 mobile-api.imlaidian.com
+^https:\/\/mobile-api\.imlaidian\.com\/api\/args - reject
+
+#搜电充电小程序去广告 wxs-weixin.sd.zhumanggroup.com
+^https:\/\/wxs-weixin\.sd\.zhumanggroup\.com\/api\/v2\/ad - reject
+
+#街电小程序去广告 s.jiediankeji.com
+^https:\/\/s\.jiediankeji\.com\/adv - reject
+
+#小电充电小程序去广告 smarket.dian.so,file.dian.so
+^https:\/\/smarket\.dian\.so - reject
+^https:\/\/file\.dian\.so\/c\/leto - reject
+
+#怪兽充电小程序去广告 aag.enmonster.com
+^https:\/\/aag\.enmonster\.com\/apa\/index\/advert\/skin - reject
+
+#小兔充充小程序去广告 ad.xiaotucc.com, mapi.xiaotucc.com
+^https:\/\/ad\.xiaotucc\.com\/advert - reject
+
+#松果出行小程序去广告 @keywos api.songguo7.com
+^https:\/\/api\.songguo7\.com\/(\w{3})?mp\/v2\/misc\/(toast|user_operate_info|unlock_without_order|unlock_operate_info) - reject
+
+#花小猪打车小程序去广告 api.hongyibo.com.cn, res.hongyibo.com.cn
+^https:\/\/api\.hongyibo\.com\.cn - reject
+^https:\/\/res\.hongyibo\.com\.cn\/os\/gs\/resapi\/activity - reject
+
+#乘车码小程序去广告 @jinlvei ccmsupport-sz.tenpay.com
+^https:\/\/ccmsupport-sz\.tenpay\.com\/cgi-bin\/common\/ccm_page_element.cgi - reject
+
+#奈雪小程序去广告 tm-api.pin-dao.cn
+^https:\/\/tm-api\.pin-dao\.cn\/home\/api\/index\/activeConfig\/v2 - reject
+^https:\/\/tm-api\.pin-dao\.cn\/home\/api\/resource\/config\/homeBannerNodes - reject
+
+#蜜雪冰城小程序去广告 mxsa.mxbc.net
+^https:\/\/mxsa\.mxbc\.net\/api\/v1\/adinfo\/adplace\/query - reject
+
+#滴滴青桔小程序去广告 htwkop.xiaojukeji.com
+^https:\/\/htwkop\.xiaojukeji\.com\/gateway\?api=cms\.htw\.delivery - reject
+^https:\/\/htwkop\.xiaojukeji\.com\/gateway\?api=hm\.fa\.combineHomepageInfo - reject
+^https:\/\/htwkop\.xiaojukeji\.com\/gateway\?api=hm\.fa\.mallRecommend - reject
+
+#一点点小程序去广告 cappapi.alittle-tea.com, alittle-tea.oss-cn-shanghai.aliyuncs.com
+^https:\/\/alittle-tea\.oss-cn-shanghai\.aliyuncs\.com\/images\/platform\/alittle - reject
+
+#德邦快递小程序去广告 www.deppon.com
+^https:\/\/www\.deppon\.com\/gwapi\/memberService\/eco\/member\/grade\/commonInterface - reject
+
+#携程旅行小程序去广告 m.ctrip.com
+^https:\/\/m\.ctrip\.com\/restapi\/soa2\/13916\/tripAds - reject
+^https:\/\/m\.ctrip\.com\/restapi\/soa2\/12673\/queryWeChatHotEvent - reject
+
+# 猫眼电影小程序去广告
+# 弹窗广告+横幅广告 #主机名ad.maoyan.com
+^https:\/\/ad\.maoyan\.com\/api\/position\/detail - reject
+# 电竞赛事+热门赛事 #主机名wx.maoyan.com
+^https:\/\/wx\.maoyan\.com\/maoyansh\/api\/mobile\/(hotMatchList|eSportsIps) - reject
+# 猫眼放映厅 #主机名vod-movie.maoyan.com
+^https:\/\/vod-movie\.maoyan\.com\/vod\/video\/onlineMovies\.json - reject
+# 精彩演出
+^https:\/\/wx\.maoyan\.com\/maoyansh\/myshow\/ajax\/movie\/wonderShow - reject
+# 七日精选
+^https:\/\/wx\.maoyan\.com\/maoyansh\/myshow\/ajax\/performances\/calendar\/0 - reject
+# 今日必抢
+^https:\/\/wx\.maoyan\.com\/maoyansh\/myshow\/ajax\/performances\/rob\/main - reject
+# 大咖新动态
+^https:\/\/wx\.maoyan\.com\/maoyansh\/myshow\/ajax\/celebrityBasicList\/query - reject
+# 为你推荐
+^https:\/\/wx\.maoyan\.com\/maoyansh\/myshow\/ajax\/recommend\/performances - reject
+# 首页底部推荐 #主机名api.maoyan.com
+^https:\/\/api\.maoyan\.com\/sns\/common\/feed\/channel\/v2\/list\.json - reject
+# 演出页面全部拦截
+^https:\/\/wx\.maoyan\.com\/maoyansh\/myshow\/ajax\/ad\/detail - reject
+
+# 收钱吧小程序去广告 @可莉🅥
+^https:\/\/api\.pinduoduo\.com\/api\/ktt_gateway\/activity\/feeds\/personal_home_page\/ - reject
+
+# 顺丰速运+小程序去广告 @可莉🅥
+^https:\/\/mcs-mimp-web\.sf-express\.com\/mcs-mimp\/integralPlanet\/getCxAdvertiseList - reject
+^https:\/\/ucmp-static\.sf-express\.com\/proxy\/wxbase\/wxTicket\/wxLiveStreamInfo\?pageNo - reject
+^https:\/\/ucmp\.sf-express\.com\/proxy\/operation-platform\/info-flow-adver\/query - reject
+^https:\/\/ucmp\.sf-express\.com\/proxy\/esgcempcore\/member(Goods\/pointMallService\/goodsList|Manage\/memberEquity\/queryRecommendEquity|ActLengthy\/fullGiveActivityService\/fullGiveInfo) - reject
+# 顺丰速运+ 弹窗广告  @ArthasYZ
+^https?:\/\/ucmp\.sf-express\.com\/cx-wechat-query\/query\/info-flow\/reconsitution-list - reject
+
+#滴滴代驾小程序去广告 daijia.kuaidadi.com, as.xiaojukeji.com
+^https:\/\/as\.xiaojukeji\.com\/ep\/as\/conf\?ns=daijia-front&name= - reject
+^https:\/\/daijia\.kuaidadi\.com\/gateway\?api=prado\.cms\.delivery\.batch&apiVe - reject
 
 [Script]
 #BoxJs
@@ -241,6 +434,12 @@ http-request https?:\/\/.+?\.googlevideo\.com\/.+&(oad|ctier)=(?!A),script-path=
 weixin110.js = type=http-response,requires-body=1,max-size=-1,pattern=^https?:\/\/weixin110\.qq\.com\/cgi-bin\/mmspamsupport-bin\/newredirectconfirmcgi,script-path=https://raw.githubusercontent.com/HotKids/Rules/master/Script/weixin110.js
 
 TestFlight区域限制解除 = type=http-request,pattern=^https?:\/\/testflight\.apple\.com\/v\d\/accounts\/.+?\/install$,requires-body=1,max-size=0,script-path=https://gist.githubusercontent.com/NobyDa/9be418b93afc5e9c8a8f4d28ae403cf2/raw/TF_Download.js
+
+#EMS中国邮政物流速递去广告 @TEAXS ump.ems.com.cn
+http-response ^https:\/\/ump\.ems\.com\.cn\/new-generation-extend\/redis\/pageInfoByChannel script-path = https://gitlab.com/lodepuly/vpn_tool/-/raw/master/Resource/Script/WexinMiniPrograms/ems/ems.js, requires-body = true, tag = EMS中国邮政物流速递去广告
+
+#滴滴出行去广告 @TEAXS common.diditaxi.com.cn
+http-response ^https:\/\/common\.diditaxi\.com\.cn\/common\/v5 script-path = https://gitlab.com/lodepuly/vpn_tool/-/raw/master/Resource/Script/WexinMiniPrograms/didi/didi.js, requires-body = true, tag = 滴滴出行去广告
 
 # yichahucha
 奈飞评分1 = type=http-request,pattern=^https?:\/\/ios(-.*)?\.prod\.ftl\.netflix\.com\/iosui\/user/.+path=%5B%22videos%22%2C%\d+%22%2C%22summary%22%5D,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/nf_rating.js
@@ -288,4 +487,4 @@ wb_launch.js = type=http-response,requires-body=1,max-size=-1,pattern=^https?:\/
 WeChat.js = type=http-response,requires-body=1,max-size=-1,pattern=^https?:\/\/mp\.weixin\.qq\.com\/mp\/getappmsgad,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/File/Wechat.js
 
 [MITM]
-hostname = %APPEND% pingtas.qq.com, c.pc.qq.com, cgi.connect.qq.com, *.googlevideo.com, *.youtube.com, youtubei.googleapis.comtiebac.baidu.com, sub.store, tncj.hortorgames.com, *.googlevideo.com, testflight.apple.com,api.weibo.cn,mapi.weibo.com,*.uve.weibo.com,trade-acs.m.taobao.com,*acs.m.taobao.com,com,*api.smzdm.com,haojia.m.smzdm.com,ios-*.prod.ftl.netflix.com,ios.prod.ftl.netflix.com,duoting.tatatimes.com, cm.szsszykj.com, avoscloud.com, api.flexibits.com, d.syshhc.top, 115.28.168.103, dbapi.ganbuguo.com,api.591master.com, www.mindmeister.com, sports.lifesense.com, api.pushover.net, subs.platforms.team, api.hulusaas.com, snailsleep.net,music.snailsleep.net,community.snailsleep.net, api.jiaonizuocai.com, nmeditation.snailsleep.net, claritywallpaper.com, subscription-service.neuralprisma.com, mappsv5.caixin.com, diary.7english.cn, api.gotokeep.com, *.ddly666.top, hkj178.com, a.jxjt888.top, lysl2020.com, www.i3zh.com,mb3admin.com,api2.mubu.com,mp.weixin.qq.com,weixin110.qq.com,r.inews.qq.com,m.client.10010.com,api.revenuecat.com,vip1.kuwo.cn,api.gamer.com.tw,ap*.intsig.net,newdrugs.dxy.cn,account.wps.cn,viva.v21xy.com,api.bjxkhc.com,api.vnision.com,api.bilibili.com,api.m.jd.com,gw.alicdn.com,render.alipay.com, api-access.pangolin-sdk-toutiao.com, api.mh.163.com, p.du.163.com, api.m.mi.com, *.huami.com, api.jr.mi.com, home.mi.com, shopapi.io.mi.com, img.dailmo.com, img.allahall.com, app.zhoudamozi.com, api.pinduoduo.com, api.yangkeduo.com, gw.alicdn.com, acs.m.taobao.com, ccmsupport-sz.tenpay.com, m.qianbao.qq.com, app.missevan.com, api-access.pangolin-sdk-toutiao.com, mi.gdt.qq.com, open.e.kuaishou.com, hfapp-service.qweather.net, home.umetrip.com, umerp.umetrip.com, us.l.qq.com, dict.youdao.com, api-overmind.youdao.com, cdke.youdao.com, acs.m.taobao.com, guide-acs.m.taobao.com, gw.alicdn.com, heic.alicdn.com, client.app.coc.10086.cn, m.sd.10086.cn, gx.10086.cn, api.ahmobile.cn, wap.js.10086.cn, god.gameyw.netease.com, v6ii.gdt.qq.com, client-api-v2.oray.com, sfo.mddcloud.com.cn, mob.mddcloud.com.cn, toblog.ctobsnssdk.com, t-dsp.pinduoduo.com, mobads-pre-config.cdn.bcebos.com, sdk1xyajs.data.kuiniuca.com, conf-darwin.xycdn.com, *.ubixioe.com, mercury-gateway.ixiaochuan.cn, api.wfdata.club, mall.meituan.com, iyes.youku.com, acs.m.goofish.com, portal-portm.meituan.com, service.gd.10086.cn, gw.chuangkit.com, qiye.gaoding.com, app.10099.com.cn
+hostname = %APPEND% pingtas.qq.com, c.pc.qq.com, cgi.connect.qq.com, *.googlevideo.com, *.youtube.com, youtubei.googleapis.comtiebac.baidu.com, sub.store, tncj.hortorgames.com, *.googlevideo.com, testflight.apple.com,api.weibo.cn,mapi.weibo.com,*.uve.weibo.com,trade-acs.m.taobao.com,*acs.m.taobao.com,com,*api.smzdm.com,haojia.m.smzdm.com,ios-*.prod.ftl.netflix.com,ios.prod.ftl.netflix.com,duoting.tatatimes.com, cm.szsszykj.com, avoscloud.com, api.flexibits.com, d.syshhc.top, 115.28.168.103, dbapi.ganbuguo.com,api.591master.com, www.mindmeister.com, sports.lifesense.com, api.pushover.net, subs.platforms.team, api.hulusaas.com, snailsleep.net,music.snailsleep.net,community.snailsleep.net, api.jiaonizuocai.com, nmeditation.snailsleep.net, claritywallpaper.com, subscription-service.neuralprisma.com, mappsv5.caixin.com, diary.7english.cn, api.gotokeep.com, *.ddly666.top, hkj178.com, a.jxjt888.top, lysl2020.com, www.i3zh.com,mb3admin.com,api2.mubu.com,mp.weixin.qq.com,weixin110.qq.com,r.inews.qq.com,m.client.10010.com,api.revenuecat.com,vip1.kuwo.cn,api.gamer.com.tw,ap*.intsig.net,newdrugs.dxy.cn,account.wps.cn,viva.v21xy.com,api.bjxkhc.com,api.vnision.com,api.bilibili.com,api.m.jd.com,gw.alicdn.com,render.alipay.com, api-access.pangolin-sdk-toutiao.com, api.mh.163.com, p.du.163.com, api.m.mi.com, *.huami.com, api.jr.mi.com, home.mi.com, shopapi.io.mi.com, img.dailmo.com, img.allahall.com, app.zhoudamozi.com, api.pinduoduo.com, api.yangkeduo.com, gw.alicdn.com, acs.m.taobao.com, ccmsupport-sz.tenpay.com, m.qianbao.qq.com, app.missevan.com, api-access.pangolin-sdk-toutiao.com, mi.gdt.qq.com, open.e.kuaishou.com, hfapp-service.qweather.net, home.umetrip.com, umerp.umetrip.com, us.l.qq.com, dict.youdao.com, api-overmind.youdao.com, cdke.youdao.com, acs.m.taobao.com, guide-acs.m.taobao.com, gw.alicdn.com, heic.alicdn.com, client.app.coc.10086.cn, m.sd.10086.cn, gx.10086.cn, api.ahmobile.cn, wap.js.10086.cn, god.gameyw.netease.com, v6ii.gdt.qq.com, client-api-v2.oray.com, sfo.mddcloud.com.cn, mob.mddcloud.com.cn, toblog.ctobsnssdk.com, t-dsp.pinduoduo.com, mobads-pre-config.cdn.bcebos.com, sdk1xyajs.data.kuiniuca.com, conf-darwin.xycdn.com, *.ubixioe.com, mercury-gateway.ixiaochuan.cn, api.wfdata.club, mall.meituan.com, iyes.youku.com, acs.m.goofish.com, portal-portm.meituan.com, service.gd.10086.cn, gw.chuangkit.com, qiye.gaoding.com, app.10099.com.cn, 3pp.starbucks.com.cn, aag.enmonster.com, activity.yonghuivip.com, ad.maoyan.com, ad.xiaotucc.com, ads.ishansong.com, alittle-tea.oss-cn-shanghai.aliyuncs.com, api-fouth-mem.huazhu.com, api-marketing.zhinengxiyifang.cn, api.hellobike.com, api.hengdianfilm.com, api.hongyibo.com.cn reject-dict, api.kuaidihelp.com, api.maoyan.com, api.mcd.cn, api.pinduoduo.com, api.prod.dj.mstand.cn, api.prod.dj.mstand.cn, api.songguo7.com, api.yonghuivip.com, apiproxy.zuche.com, apis.alenable.com, app.95504.net, app.homeinns.com, applets.jtexpress.com.cn, appuser-static.huolala.cn, as.xiaojukeji.com, capis(-d)?.didapinche.com, cappapi.alittle-tea.com, cbd-gateway-service-applets.hualala.com, ccmsupport-sz.tenpay.com, coco-com.e.verystar.net, common.diditaxi.com.cn, conf.diditaxi.com.cn, creditcardapp.bankcomm.com, customer-app.sto.cn, daijia.kuaidadi.com, dock.tenchii.com, dsp.fcbox.com reject, file.dian.so, flow.dmall.com, fscdn.zto.com, gw-passenger-wap.01zhuanche.com, hdgateway.zto.com, htwkop.xiaojukeji.com, htwkop.xiaojukeji.com, images.qmai.cn, lawsonapi.yorentown.com, lawsonapi.yorentown.com, m.ctrip.com, mapi.xiaotucc.com, mbmodule-openapi.paas.cmbchina.com, mcs-mimp-web.sf-express.com, member.lxjchina.com.cn, miniapp.sexytea2013.com, minicap.caocaokeji.cn, minifm.maxxipoint.com, minipro.95504.net, miniprogram.ishansong.com, mkt-gateway.tuhu.cn, mobile-api.imlaidian.com, mxsa.mxbc.net, newton.gumingnc.com,passenger.t3go.cn, passenger.t3go.cn, passengerapi.saicmobility.com, plt.yorentown.com, qapi.huolala.cn, r2.gzyct.com, res.hongyibo.com.cn, res.pizzahut.com.cn, s.jiediankeji.com, sauron-report.yonghuivip.com, smarket.dian.so reject-dict, sto-customer-app.oss-cn-shanghai.aliyuncs.com, supplier-api.imdada.cn, suyun-guest.daojia.com, tbgapplet.carlsberg.asia, tm-api.pin-dao.cn, triangle.wearemanner.com, ucmp-static.sf-express.com, ucmp.sf-express.com, ump.ems.com.cn, ump.ems.com.cn, vod-movie.maoyan.com, webapi.qmai.cn, webapi.qmai.cn, webchatapp.fcbox.com, wechat-api.i-xiaoma.com.cn, www.deppon.com, wx.bthhotels.com, wx.maoyan.com, wxapp.bestwehotel.com, wxproj.seeyouyima.com, wxs-weixin.sd.zhumanggroup.com
