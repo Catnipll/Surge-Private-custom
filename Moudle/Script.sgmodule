@@ -46,7 +46,7 @@ DOMAIN-SUFFIX, gdt.qq.com, REJECT
 DOMAIN-SUFFIX, l.qq.com, REJECT
 DOMAIN-KEYWORD, trace.qq.com, REJECT
 DOMAIN-KEYWORD, trace.video.qq.com, REJECT
-IP-CIDR, 47.110.187.87/32, REJECT
+IP-CIDR, 47.110.187.87/32, REJECT,no-resolve
 
 # 手机QQ去广告
 DOMAIN, adsmind.gdtimg.com, REJECT
@@ -70,7 +70,7 @@ DOMAIN, mediation.adnxs.com, REJECT
 DOMAIN, sin3-ib.adnxs.com, REJECT
 
 # 中国移动去广告
-IP-CIDR, 120.240.95.37/32, REJECT
+IP-CIDR, 120.240.95.37/32, REJECT,no-resolve
 
 # 中国联通去广告
 DOMAIN-SUFFIX, m1.ad.10010.com, REJECT
@@ -80,8 +80,8 @@ DOMAIN, ad.21cn.com, REJECT
 DOMAIN, ad.k.21cn.com, REJECT
 DOMAIN, admarket.21cn.com, REJECT
 DOMAIN, adshows.21cn.com, REJECT
-IP-CIDR, 122.229.8.47/32, REJECT
-IP-CIDR, 122.229.29.89/32, REJECT
+IP-CIDR, 122.229.8.47/32, REJECT,no-resolve
+IP-CIDR, 122.229.29.89/32, REJECT,no-resolve
 
 # 小米去广告
 DOMAIN, sdkconfig.ad.xiaomi.com, REJECT
