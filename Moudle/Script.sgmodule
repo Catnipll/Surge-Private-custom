@@ -1128,8 +1128,6 @@ replaceBody = type=http-request, pattern=^https?:\/\/testflight\.apple\.com\/v2\
 # > WeChatpublicarticle
 replaceBody = type=http-response, pattern=^(http|https):\/\/mp\.weixin\.qq\.com\/mp\/getappmsgad, script-path=https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/main/scripts/replace-body.js, requires-body=true, max-size=-1, timeout=30, argument=%22advertisement_num%22%3A%5Cd%2C%22advertisement_info%22%3A%5C%5B.%2B%5C%5D%2C-%3E%22advertisement_num%22%3A0%2C%22advertisement_info%22%3A%5B%5D%2C
 
-AD = type=http-response, pattern=^http?:\/\/pipi\.4kya\.com\/\/xgapp\.php\/v\d\/advert\?position=, script-path=https://raw.githubusercontent.com/eming0802/rules/main/QuantumultX/script/AD.js, requires-body=true, max-size=-1, timeout=60
-
 # yichahucha
 奈飞评分1 = type=http-request,pattern=^https?:\/\/ios(-.*)?\.prod\.ftl\.netflix\.com\/iosui\/user/.+path=%5B%22videos%22%2C%\d+%22%2C%22summary%22%5D,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/nf_rating.js
 奈飞评分2 = type=http-response,requires-body=1,pattern=^https?:\/\/ios(-.*)?\.prod\.ftl\.netflix\.com\/iosui\/user/.+path=%5B%22videos%22%2C%\d+%22%2C%22summary%22%5D,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/nf_rating.js
