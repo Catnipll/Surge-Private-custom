@@ -1043,12 +1043,6 @@ weixin110.js = type=http-response,requires-body=1,max-size=-1,pattern=^https?:\/
 
 TestFlight区域限制解除 = type=http-request,pattern=^https?:\/\/testflight\.apple\.com\/v\d\/accounts\/.+?\/install$,requires-body=1,max-size=0,script-path=https://gist.githubusercontent.com/NobyDa/9be418b93afc5e9c8a8f4d28ae403cf2/raw/TF_Download.js
 
-#EMS中国邮政物流速递去广告 @TEAXS ump.ems.com.cn
-http-response ^https:\/\/ump\.ems\.com\.cn\/new-generation-extend\/redis\/pageInfoByChannel script-path = https://gitlab.com/lodepuly/vpn_tool/-/raw/master/Resource/Script/WexinMiniPrograms/ems/ems.js, requires-body = true, tag = EMS中国邮政物流速递去广告
-
-#滴滴出行去广告 @TEAXS common.diditaxi.com.cn
-http-response ^https:\/\/common\.diditaxi\.com\.cn\/common\/v5 script-path = https://gitlab.com/lodepuly/vpn_tool/-/raw/master/Resource/Script/WexinMiniPrograms/didi/didi.js, requires-body = true, tag = 滴滴出行去广告
-
 #zwf234去广告（开屏广告居多）
 # 嘀嗒出行
 startup = type=http-response, pattern=^https?:\/\/capis(-?\w*)?\.didapinche\.com\/ad\/cx\/startup\?, script-path=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/startup/startup.js, requires-body=true, max-size=-1, timeout=60
